@@ -12,7 +12,7 @@ add_library(mylib "" MyClass.cc)
 set_target_properties(mylib PROPERTIES COMPILE_FLAGS "${cxx_strict}")
 
 # text tests
-add_executable(app MyTextTests.cc)
+add_executable(app MyApp.cc)
 set_target_properties(app PROPERTIES COMPILE_FLAGS "${cxx_strict}")
 target_link_libraries(app mylib)
 
