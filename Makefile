@@ -27,20 +27,20 @@ bin:
 
 build: build-unit build-text
 build-unit: bin $(BINDIR)/MyUnitTests$(BINEXT)
-build-text: bin $(BINDIR)/MyTextTests$(BINEXT)
+build-text: bin $(BINDIR)/MyApp$(BINEXT)
 
 $(BINDIR)/MyUnitTests$(BINEXT): $(SRCDIR)/MyClass.cc $(SRCDIR)/MyClass.h $(SRCDIR)/MyUnitTests.cc $(GTESTDIR)/src/gtest-all.cc $(GTESTDIR)/src/gtest_main.cc
 	$(CXX) $(CPPFLAGS) $(INCLUDES) -I$(SRCDIR) -o $(BINDIR)/MyUnitTests$(BINEXT) $(SRCDIR)/MyClass.cc $(SRCDIR)/MyUnitTests.cc $(GTESTDIR)/src/gtest-all.cc $(GTESTDIR)/src/gtest_main.cc $(LINKFLAGS)
 
-$(BINDIR)/MyTextTests$(BINEXT): $(SRCDIR)/MyClass.cc $(SRCDIR)/MyClass.h $(SRCDIR)/MyTextTests.cc
-	$(CXX) $(CPPFLAGS) $(INCLUDES) -I$(SRCDIR) -o $(BINDIR)/MyTextTests$(BINEXT) $(SRCDIR)/MyClass.cc $(SRCDIR)/MyTextTests.cc $(LINKFLAGS)
+$(BINDIR)/MyApp$(BINEXT): $(SRCDIR)/MyClass.cc $(SRCDIR)/MyClass.h $(SRCDIR)/MyApp.cc
+	$(CXX) $(CPPFLAGS) $(INCLUDES) -I$(SRCDIR) -o $(BINDIR)/MyApp$(BINEXT) $(SRCDIR)/MyClass.cc $(SRCDIR)/MyApp.cc $(LINKFLAGS)
 
 test: $(BINDIR)/MyUnitTests$(BINEXT)
 	$(BINDIR)/MyUnitTests$(BINEXT)
 
-run: $(BINDIR)/MyTextTests$(BINEXT)
-	$(BINDIR)/MyTextTests$(BINEXT)
+run: $(BINDIR)/MyApp$(BINEXT)
+	$(BINDIR)/MyApp$(BINEXT)
 
 clean:
 	- $(DELFILE) $(BINDIR)$(PATHSEP)MyUnitTests$(BINEXT)
-	- $(DELFILE) $(BINDIR)$(PATHSEP)MyTextTests$(BINEXT)
+	- $(DELFILE) $(BINDIR)$(PATHSEP)MyApp$(BINEXT)
