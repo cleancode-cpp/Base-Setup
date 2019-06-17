@@ -10,5 +10,5 @@ Learn a lot!
 ## Git clone with submodules
 
 ```
-git clone --recurse-submodules https://github.com/cleancode-cpp/Base-Setup.git
+git clone --recurse-submodules -b <branch-name> https://github.com/cleancode-cpp/Base-Setup.git
 ```
